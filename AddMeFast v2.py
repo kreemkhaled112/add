@@ -33,7 +33,7 @@ class AMFBot:
         self.dlay = random.randrange(15,20)
         self.api_token = '6286940046:AAFrut4rAMEfmcAdRTwPZpe0OHMidgeC9Qw'
         self.chat_id = '1733472658'
-        Bot = "Bot78!"
+        Bot = "Bot70!"
         self.text = f'Bypass CloudFlare successfully, {Bot}'
         self.text1 = f'Bypass CloudFlare Faild, {Bot}'
         self.text2 = f' Error, {Bot}'
@@ -846,10 +846,17 @@ class AMFBot:
                 try:
                     bot.maximize_window()
                     sleep(5)
-                    button = WebDriverWait(bot, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div[2]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button/div/div")))
-                    button.click()
-                    sleep(5)
+                    try:
+
+                        button = WebDriverWait(bot, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div/div/div[2]/div/div/div/div[1]/div[1]/div[2]/div[2]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button/div/div")))
+                        button.click()
+                        sleep(5)
+                    except:
+                        button = WebDriverWait(bot, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div/div/div[1]/div/div/div/div[1]/div[1]/div[2]/div[2]/section/main/div/header/section/div[3]/div/div[1]/button/div/div")))
+                        button.click()
+                        sleep(5)
                 except:
                     self.n += 1
                     if self.n == 2 :
