@@ -359,7 +359,7 @@ class AMFBot:
                     sleep(5)
                 except:
                     self.n += 1
-                    if self.n == 2 :
+                    if self.n == 5 :
                         ed.Telgram(self.Facebook_text)
                         self.n = 0
                     
@@ -445,7 +445,7 @@ class AMFBot:
                         sleep(5)
                 except:
                     self.n += 1
-                    if self.n == 2 :
+                    if self.n == 3 :
                         ed.Telgram(self.Facebook_text)
                         self.n = 0
                         
@@ -849,6 +849,7 @@ class AMFBot:
                     button = WebDriverWait(bot, 10).until(
                         EC.element_to_be_clickable((By.XPATH, "//div[@class='_aacl _aaco _aacw _aad6 _aade']")))
                     button.click()
+                    sleep(5)
                 except:
                     self.n += 1
                     if self.n == 2 :
