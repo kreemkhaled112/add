@@ -852,7 +852,7 @@ class AMFBot:
                     sleep(5)
                 except:
                     self.n += 1
-                    if self.n == 2 :
+                    if self.n == 3 :
                         ed.Telgram(self.Insta_text)
                         self.n = 0
                         
@@ -1248,19 +1248,12 @@ class AMFBot:
                     ed.Bypass_Cloudflare()
                     break
                 except:
-                    try:
-                        ed.Check_items1()
-                        bot.refresh()
-                        ed.pinterest_save()
-                        break
-                    except:
-                        ed.Telgram(self.text2)
-                        input("Error......")
-                        break
+                    bot.refresh()
+                    ed.soundcloud_like()
                     break
                 break
             break
-           
+        
     def soundcloud_follow(self):
         while self.is_running:
             bot = self.bot 
