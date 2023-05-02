@@ -33,7 +33,7 @@ class AMFBot:
         self.dlay = random.randrange(15,20)
         self.api_token = '6286940046:AAFrut4rAMEfmcAdRTwPZpe0OHMidgeC9Qw'
         self.chat_id = '1733472658'
-        Bot = "Bot70!"
+        Bot = "Bot!"
         self.text = f'Bypass CloudFlare successfully, {Bot}'
         self.text1 = f'Bypass CloudFlare Faild, {Bot}'
         self.text2 = f' Error, {Bot}'
@@ -1628,6 +1628,7 @@ class AMFBot:
             except:
                 print("NO Bonus Today")
                 bot.back()
+        return schedule.CancelJob
 
     def schedule_job(self):
         schedule.every().day.at("01:50").do(self.Bonus) 
