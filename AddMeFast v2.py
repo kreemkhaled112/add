@@ -1092,7 +1092,7 @@ class AMFBot:
                     sleep(5)
                     ed.youtube_Like()
                     break
-                
+                self.n = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 10).until(
@@ -1112,8 +1112,14 @@ class AMFBot:
                         ed.youtube_Like()
                         break
                     except:
-                        ed.Telgram(self.text2)
-                        input("Error......")
+                        bot.refresh()
+                        ed.youtube_Like()
+                        self.n += 1 
+                        if self.n == 2 :
+                            ed.Telgram(self.text2)
+                            self.n = 0
+                            input("Error......")
+                            break
                         break
                     break
                 break
@@ -1237,7 +1243,8 @@ class AMFBot:
                     sleep(5)
                     ed.pinterest_save()
                     break
-                
+
+                self.n = 0 
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 sleep(5)
@@ -1248,8 +1255,21 @@ class AMFBot:
                     ed.Bypass_Cloudflare()
                     break
                 except:
-                    bot.refresh()
-                    ed.soundcloud_like()
+                    try:
+                        ed.Check_items1()
+                        bot.refresh()
+                        ed.pinterest_save()
+                        break
+                    except:
+                        bot.refresh()
+                        ed.pinterest_save()
+                        self.n += 1 
+                        if self.n == 2 :
+                            ed.Telgram(self.text2)
+                            self.n = 0
+                            input("Error......")
+                            break
+                        break
                     break
                 break
             break
