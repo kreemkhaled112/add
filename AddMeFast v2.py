@@ -1069,9 +1069,10 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
+                sleep(2)
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
+                    bot.minimize_window()
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
@@ -1657,28 +1658,33 @@ class AMFBot:
             sleep(30)
 
     def Bypass_Cloudflare(self):
+        a = 0
         WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
         ed.position()
-        if int(self.radio_var.get()) == 1 :
-            sleep(5)
-            pyautogui.leftClick(642, 288, 1)
-            sleep(10)
-            try:
-                WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
-                ed.Telgram(self.text1)
-                input("Press Enter.........")
-            except:
-                ed.Telgram(self.text)
-        elif int(self.radio_var.get()) == 2:
-            sleep(5)
-            pyautogui.leftClick(166, 296, 1)
-            sleep(10)
-            try:
-                WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
-                ed.Telgram(self.text1)
-                input("Press Enter.........")
-            except:
-                ed.Telgram(self.text)
+        for _ in range(2):
+            if int(self.radio_var.get()) == 1 :
+                sleep(5)
+                pyautogui.leftClick(642, 288, 1)
+                sleep(10)
+                try:
+                    WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
+                    a += 1
+                except:
+                    ed.Telgram(self.text)
+                    break
+            elif int(self.radio_var.get()) == 2:
+                sleep(5)
+                pyautogui.leftClick(166, 296, 1)
+                sleep(10)
+                try:
+                    WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
+                    a += 1
+                except:
+                    ed.Telgram(self.text)
+                    break
+        if a == 2:
+            ed.Telgram(self.text1)
+            input("Press Enter.........")
         
     
     def Check_page(self):
