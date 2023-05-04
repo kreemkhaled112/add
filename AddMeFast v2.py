@@ -14,6 +14,7 @@ from time import sleep
 from threading import Thread
 import threading
 
+
 class AMFBot:
     def __init__(self,crazy):
         self.crazy = crazy
@@ -1113,14 +1114,14 @@ class AMFBot:
                         ed.youtube_Like()
                         break
                     except:
-                        bot.refresh()
-                        ed.youtube_Like()
                         self.n += 1 
                         if self.n == 2 :
                             ed.Telgram(self.text2)
                             self.n = 0
                             input("Error......")
                             break
+                        bot.refresh()
+                        ed.youtube_Like()
                         break
                     break
                 break
@@ -1262,14 +1263,14 @@ class AMFBot:
                         ed.pinterest_save()
                         break
                     except:
-                        bot.refresh()
-                        ed.pinterest_save()
                         self.n += 1 
                         if self.n == 2 :
                             ed.Telgram(self.text2)
                             self.n = 0
                             input("Error......")
                             break
+                        bot.refresh()
+                        ed.pinterest_save()
                         break
                     break
                 break

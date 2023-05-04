@@ -173,7 +173,9 @@ def facebook(s,user):
         with open('name.txt', 'r') as f:
                 name = f.read().splitlines()
 
-        bot = uc.Chrome()
+        options = webdriver.ChromeOptions()
+        options.add_argument("--incognito")
+        bot = webdriver.Chrome(options=options)
 
         bot.get("https://www.facebook.com/")
 
@@ -187,10 +189,10 @@ def facebook(s,user):
         button2.send_keys(choice(name))
         sleep(s)
         button2 = WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[2]/div/div[1]/input")))
-        button2.send_keys(f'{user}@outlook.com')
+        button2.send_keys(f'{user}')
         sleep(s)
         button2 = WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[3]/div/div/div[1]/input")))
-        button2.send_keys(f'{user}@outlook.com')
+        button2.send_keys(f'{user}')
         sleep(s)
         button3 = WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div[2]/div/div/div[2]/div/div/div[1]/form/div[1]/div[4]/div/div[1]/input")))
         button3.send_keys("01278675268")
