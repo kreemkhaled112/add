@@ -1151,7 +1151,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
+                
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -1218,7 +1218,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
+                
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -1306,7 +1306,7 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.soundcloud_follow()
                     break
                 try:
@@ -1364,7 +1364,7 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.soundcloud_like()
                     break
                 try:
@@ -1423,7 +1423,7 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.reddit_Members()
                     break
                 
@@ -1483,7 +1483,7 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.reddit_Upvote()
                     break
                 
@@ -1544,14 +1544,14 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.tiktok_Follow()
                     break
                 try:
-                    button = WebDriverWait(bot, 6).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "button[type='button']")))
-                    sleep(random.randrange(4,6))
-                    button.click()
+                    current_url = bot.current_url
+                    username = current_url.split('@')[1]
+                    ed.Telgram(username)
+                    input("Done: ")
                     sleep(6)
                 except:
                     bot.close()
@@ -1604,7 +1604,7 @@ class AMFBot:
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
+                    sleep(5)
                     ed.tiktok_like()
                     break
                 try:

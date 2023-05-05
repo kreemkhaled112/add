@@ -249,6 +249,9 @@ def start():
         Thread(target=outlook, args=(s,chrs)).start()
 
     elif input_char == 3:
+        chrs = 'abcdefghijklmnopqrstuvwxyz'
+        user = ''.join(choices(chrs, k=7))
+        Write.Print(f"         [?] {user} \n", Colors.cyan_to_blue, interval=0.0001)
         Write.Print("          [?] Email ↓\n", Colors.cyan_to_blue, interval=0.0001)
         user = Write.Input("           >  ", Colors.cyan_to_blue, interval=0.000000005, hide_cursor=True)
         s = 2
