@@ -306,7 +306,6 @@ class AMFBot:
         except:
             try:
                 ed.Bypass_Cloudflare()
-                bot.get("https://addmefast.com/login")
                 sleep(2)
                 try:
                     ed.login() 
@@ -1539,6 +1538,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
+                sleep(5)
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -1552,7 +1552,7 @@ class AMFBot:
                     username = current_url.split('@')[1]
                     ed.Telgram(username)
                     input("Done: ")
-                    sleep(6)
+                    sleep(2)
                 except:
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -1570,8 +1570,14 @@ class AMFBot:
                     ed.Bypass_Cloudflare()
                     break
                 except:
-                    bot.refresh()
-                    ed.tiktok_Follow()
+                    try:
+                        ed.Check_items1()
+                        bot.refresh()
+                        ed.tiktok_Follow()
+                        break
+                    except:
+                        ed.tiktok_Follow()
+                        break
                     break
                 break
             break
@@ -1640,6 +1646,7 @@ class AMFBot:
         bot = self.bot
         if  self.is_running:
             bot.get("https://addmefast.com/bonus_points")
+            sleep(60)
             try:
                 subscribe = WebDriverWait(bot, 10).until(
                             EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div[3]/center/div[2]/center/div[3]/input"))
@@ -1656,7 +1663,7 @@ class AMFBot:
         schedule.every().day.at("01:50").do(self.Bonus) 
         while True:
             schedule.run_pending()
-            sleep(30)
+            sleep(60)
 
     def Bypass_Cloudflare(self):
         a = 0
