@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 import  pyautogui,random,schedule,requests
 from time import sleep
+import datetime
 from threading import Thread
 import threading
 
@@ -1113,13 +1114,7 @@ class AMFBot:
                         ed.youtube_Like()
                         break
                     except:
-                        self.n += 1 
-                        if self.n == 2 :
-                            ed.Telgram(self.text2)
-                            self.n = 0
-                            input("Error......")
-                            break
-                        bot.refresh()
+                        bot.switch_to.window(bot.window_handles[0])
                         ed.youtube_Like()
                         break
                     break
@@ -1262,13 +1257,7 @@ class AMFBot:
                         ed.pinterest_save()
                         break
                     except:
-                        self.n += 1 
-                        if self.n == 2 :
-                            ed.Telgram(self.text2)
-                            self.n = 0
-                            input("Error......")
-                            break
-                        bot.refresh()
+                        bot.switch_to.window(bot.window_handles[0])
                         ed.pinterest_save()
                         break
                     break
@@ -1632,28 +1621,27 @@ class AMFBot:
                 break
             break
 
-    def Bonus(self):
-        bot = self.bot
-        if  self.is_running:
-            bot.get("https://addmefast.com/bonus_points")
-            try:
-                subscribe = WebDriverWait(bot, 10).until(
-                            EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div[3]/center/div[2]/center/div[3]/input"))
-                        )
-                subscribe.click()
-                bot.back()
-                sleep(60)
-            except:
-                print("NO Bonus Today")
-                bot.back()
-                sleep(60)
-        return schedule.CancelJob
-
     def schedule_job(self):
-        schedule.every().day.at("01:50").do(self.Bonus) 
         while True:
-            schedule.run_pending()
-            sleep(60)
+            now = datetime.datetime.now()
+            if now.hour == 1 and now.minute == 50:
+                bot = self.bot
+                if  self.is_running:
+                    bot.get("https://addmefast.com/bonus_points")
+                    try:
+                        subscribe = WebDriverWait(bot, 10).until(
+                                    EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div[3]/center/div[2]/center/div[3]/input"))
+                                )
+                        subscribe.click()
+                        bot.back()
+                        break
+                    except:
+                        print("NO Bonus Today")
+                        bot.back()
+                        break
+                break
+            else:
+                sleep(60)
 
     def Bypass_Cloudflare(self):
         a = 0

