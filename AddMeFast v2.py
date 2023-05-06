@@ -1549,8 +1549,7 @@ class AMFBot:
                     break
                 try:
                     current_url = bot.current_url
-                    username = current_url.split('@')[1]
-                    ed.Telgram(username)
+                    ed.Telgram(current_url)
                     input("Done: ")
                     sleep(2)
                 except:
@@ -1646,17 +1645,17 @@ class AMFBot:
         bot = self.bot
         if  self.is_running:
             bot.get("https://addmefast.com/bonus_points")
-            sleep(60)
             try:
                 subscribe = WebDriverWait(bot, 10).until(
                             EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div[3]/center/div[2]/center/div[3]/input"))
                         )
                 subscribe.click()
                 bot.back()
-                
+                sleep(60)
             except:
                 print("NO Bonus Today")
                 bot.back()
+                sleep(60)
         return schedule.CancelJob
 
     def schedule_job(self):
@@ -1673,7 +1672,7 @@ class AMFBot:
             if int(self.radio_var.get()) == 1 :
                 sleep(5)
                 pyautogui.leftClick(642, 288, 1)
-                sleep(10)
+                sleep(5)
                 try:
                     WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
                     a += 1
@@ -1683,7 +1682,7 @@ class AMFBot:
             elif int(self.radio_var.get()) == 2:
                 sleep(5)
                 pyautogui.leftClick(166, 296, 1)
-                sleep(10)
+                sleep(5)
                 try:
                     WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
                     a += 1
