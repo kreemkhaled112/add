@@ -1551,7 +1551,6 @@ class AMFBot:
                     current_url = bot.current_url
                     ed.Telgram(current_url)
                     input("Done: ")
-                    sleep(2)
                 except:
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -1569,14 +1568,8 @@ class AMFBot:
                     ed.Bypass_Cloudflare()
                     break
                 except:
-                    try:
-                        ed.Check_items1()
-                        bot.refresh()
-                        ed.tiktok_Follow()
-                        break
-                    except:
-                        ed.tiktok_Follow()
-                        break
+                    bot.switch_to.window(bot.window_handles[0])
+                    ed.tiktok_Follow()
                     break
                 break
             break
@@ -1613,11 +1606,9 @@ class AMFBot:
                     ed.tiktok_like()
                     break
                 try:
-                    button = WebDriverWait(bot, 6).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, 'span[data-e2e="like-icon"]')))
-                    sleep(random.randrange(4,6))
-                    button.click()
-                    sleep(random.randrange(6,10))
+                    current_url = bot.current_url
+                    ed.Telgram(current_url)
+                    input("Done: ")
                 except:
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -1635,7 +1626,7 @@ class AMFBot:
                     ed.Bypass_Cloudflare()
                     break
                 except:
-                    bot.refresh()
+                    bot.switch_to.window(bot.window_handles[0])
                     ed.tiktok_like()
                     break
                 break
