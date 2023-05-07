@@ -675,7 +675,6 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -755,7 +754,6 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -915,7 +913,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                bot.minimize_window()
+                
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
