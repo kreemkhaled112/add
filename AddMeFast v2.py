@@ -69,7 +69,7 @@ class AMFBot:
         self.CheckBox.select()
         self.CheckBox = CTkCheckBox(self.crazy, text="Facebook Page", variable=self.Facebook_Page)
         self.CheckBox.place(x=150,y=10)
-        
+        self.CheckBox.select()
         self.CheckBox = CTkCheckBox(self.crazy, text="Facebook Share", variable=self.Facebook_Share)
         self.CheckBox.place(x=275,y=10)
         self.CheckBox.select()
@@ -93,14 +93,14 @@ class AMFBot:
 
         self.CheckBox = CTkCheckBox(self.crazy, text="Youtube Subscribe", variable=self.Youtube_Subscribe)
         self.CheckBox.place(x=10,y=130)
-        
+        self.CheckBox.select()
         self.CheckBox = CTkCheckBox(self.crazy, text="Youtube Like", variable=self.Youtube_Like)
         self.CheckBox.place(x=150,y=130)
-        
+        self.CheckBox.select()
 
         self.CheckBox = CTkCheckBox(self.crazy, text="Pinterest Follower", variable=self.Pinterest_Follower)
         self.CheckBox.place(x=10,y=170)
-        
+        self.CheckBox.select()
         self.CheckBox = CTkCheckBox(self.crazy, text="Pinterest Save", variable=self.Pinterest_Save)
         self.CheckBox.place(x=150,y=170)
         self.CheckBox.select()
