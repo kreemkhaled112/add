@@ -14,7 +14,7 @@ from time import sleep
 import datetime
 from threading import Thread
 import threading
-from yt import *
+
 
 class AMFBot:
     def __init__(self,crazy):
@@ -1005,8 +1005,9 @@ class AMFBot:
                     ed.youtube_subscribe()
                     break
                 try:
-                    current_url = bot.current_url
-                    youtube_subscribe(current_url)
+                    button = WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,
+                        "button[class='yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m ']")))
+                    button.click()
                     sleep(5)
                 except:
                     bot.close()
