@@ -186,7 +186,7 @@ class AMFBot:
 
             self.is_running = True
             Thread(target=self.checkbox_state1).start()
-            Thread(target=self.schedule_job).start()
+            
         else:
             self.is_running = False
             self.Start.configure(text="Wait")
