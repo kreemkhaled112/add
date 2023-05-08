@@ -43,6 +43,7 @@ class AMFBot:
         self.Facebook_text = f'Facebook Problem, {Bot}'
         self.Insta_text = f'Insta Problem, {Bot}'
         self.Twitter_text = f'Twitter problem, {Bot}'
+        self.Youtube_text = f'Youtube problem, {Bot}'
         
         self.Facebook_Page = IntVar()
         self.Facebook_Post = IntVar()
@@ -1084,6 +1085,10 @@ class AMFBot:
                     button.click()
                     sleep(random.randrange(5,10))
                 except:
+                    self.n += 1
+                    if self.n == 1 :
+                        ed.Telgram(self.Youtube_text)
+                        self.n = 0
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
                     confirm = WebDriverWait(bot, 10).until(
