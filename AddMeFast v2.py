@@ -1071,7 +1071,7 @@ class AMFBot:
                 
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
-                    bot.minimize_window()
+                    
                 except:
                     # If the new tab does not exist, go back to the main tab and refresh
                     bot.switch_to.window(bot.window_handles[0])
