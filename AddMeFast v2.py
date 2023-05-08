@@ -14,7 +14,7 @@ from time import sleep
 import datetime
 from threading import Thread
 import threading
-
+from yt import *
 
 class AMFBot:
     def __init__(self,crazy):
@@ -1005,9 +1005,8 @@ class AMFBot:
                     ed.youtube_subscribe()
                     break
                 try:
-                    button = WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR,
-                        "button[class='yt-spec-button-shape-next yt-spec-button-shape-next--filled yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m ']")))
-                    button.click()
+                    current_url = bot.current_url
+                    youtube_subscribe(current_url)
                     sleep(5)
                 except:
                     bot.close()
@@ -1525,7 +1524,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                sleep(5)
+                bot.minimize_window()
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -1584,6 +1583,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
+                bot.minimize_window()
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                 except:
@@ -1619,28 +1619,6 @@ class AMFBot:
                 break
             break
 
-    def schedule_job(self):
-        while True:
-            now = datetime.datetime.now()
-            if now.hour == 1 and now.minute == 50:
-                bot = self.bot
-                if  self.is_running:
-                    bot.get("https://addmefast.com/bonus_points")
-                    try:
-                        subscribe = WebDriverWait(bot, 10).until(
-                                    EC.presence_of_element_located((By.XPATH, "/html/body/div[2]/div[2]/div[3]/center/div[2]/center/div[3]/input"))
-                                )
-                        subscribe.click()
-                        bot.back()
-                        break
-                    except:
-                        print("NO Bonus Today")
-                        bot.back()
-                        break
-                break
-            else:
-                sleep(60)
-
     def Bypass_Cloudflare(self):
         a = 0
         WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
@@ -1654,7 +1632,7 @@ class AMFBot:
                     WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
                     a += 1
                 except:
-                    ed.Telgram(self.text)
+                    
                     break
             elif int(self.radio_var.get()) == 2:
                 sleep(5)
@@ -1664,7 +1642,7 @@ class AMFBot:
                     WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
                     a += 1
                 except:
-                    ed.Telgram(self.text)
+                    
                     break
         if a == 2:
             ed.Telgram(self.text1)
