@@ -1068,7 +1068,7 @@ class AMFBot:
                             ed.Check_items()
                             break
                 bot.switch_to.window(bot.window_handles[1])
-                sleep(2)
+                
                 try:
                     WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
                     bot.minimize_window()
