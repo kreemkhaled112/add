@@ -193,7 +193,7 @@ class AMFBot:
             self.Start.configure(text="Wait")
             self.Start.configure(state="disabled")
             crazy.update()
-            sleep(15)
+            sleep(20)
             self.Start.configure(text="Start")
             self.Start.configure(fg_color='#1f538d')
             self.Start.configure(state="normal")          
@@ -1087,6 +1087,7 @@ class AMFBot:
                     self.n += 1
                     if self.n == 1 :
                         ed.Telgram(self.Youtube_text)
+                        input("Press.....")
                         self.n = 0
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -1601,6 +1602,7 @@ class AMFBot:
                     current_url = bot.current_url
                     ed.Telgram(current_url)
                     input("Done: ")
+                    sleep(5)
                 except:
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
