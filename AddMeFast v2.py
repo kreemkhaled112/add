@@ -29,6 +29,7 @@ class AMFBot:
         self.crazy.title("                        Crazy")
         
         self.n = 0
+        self.nn = 0
         self.stop = threading.Event()
         self.is_running = False
         self.check_list = []
@@ -364,7 +365,11 @@ class AMFBot:
                     if self.n == 5 :
                         ed.Telgram(self.Facebook_text)
                         self.n = 0
-                    
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
                     confirm = WebDriverWait(bot, 5).until(
@@ -374,6 +379,7 @@ class AMFBot:
                     ed.facebook_Post()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 5).until(
@@ -450,6 +456,11 @@ class AMFBot:
                     if self.n == 3 :
                         ed.Telgram(self.Facebook_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     sleep(5)
                     bot.close()
@@ -461,6 +472,7 @@ class AMFBot:
                     ed.facebook_page()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 5).until(
@@ -538,6 +550,11 @@ class AMFBot:
                     if self.n == 5 :
                         ed.Telgram(self.Facebook_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -548,6 +565,7 @@ class AMFBot:
                     ed.facebook_Share()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 sleep(5)
                 bot.switch_to.window(bot.window_handles[0])
@@ -617,6 +635,11 @@ class AMFBot:
                     if self.n == 2 :
                         ed.Telgram(self.Twitter_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -627,6 +650,7 @@ class AMFBot:
                     ed.twiter_Follow()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 5).until(
@@ -695,6 +719,11 @@ class AMFBot:
                     if self.n == 5 :
                         ed.Telgram(self.Twitter_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -705,6 +734,7 @@ class AMFBot:
                     ed.twiter_Retweet()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 5).until(
@@ -774,6 +804,11 @@ class AMFBot:
                     if self.n == 5 :
                         ed.Telgram(self.Twitter_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -784,6 +819,7 @@ class AMFBot:
                     ed.twiter_Like()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 5).until(
@@ -855,6 +891,11 @@ class AMFBot:
                     if self.n == 3 :
                         ed.Telgram(self.Insta_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -865,6 +906,7 @@ class AMFBot:
                     ed.instagram_Follow()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 10).until(
@@ -934,6 +976,11 @@ class AMFBot:
                     if self.n == 5 :
                         ed.Telgram(self.Insta_text)
                         self.n = 0
+                        self.nn += 1
+                        if self.nn == 2:
+                            ed.Telgram(self.text2)
+                            input("Error......")
+                            self.nn = 0
                         
                     bot.close()
                     bot.switch_to.window(bot.window_handles[0])
@@ -944,6 +991,7 @@ class AMFBot:
                     ed.instagram_Like()
                     break
                 self.n = 0
+                self.nn = 0
                 bot.close()
                 bot.switch_to.window(bot.window_handles[0])
                 confirm = WebDriverWait(bot, 10).until(

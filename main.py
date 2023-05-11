@@ -173,9 +173,13 @@ def facebook(s,user):
         with open('name.txt', 'r') as f:
                 name = f.read().splitlines()
 
-        options = webdriver.ChromeOptions()
-        options.add_argument("--incognito")
-        bot = webdriver.Chrome(options=options)
+        options = uc.ChromeOptions()
+        pro = "C://Users//kreem//AppData//Local//Google//Chrome//User Data//"
+        # options.add_argument(f"user-data-dir={pro}")
+        options.add_argument("--lang=en")
+        options.add_argument("--start-maximized")
+        bot = uc.Chrome(options=options,use_subprocess=True)
+        
 
         bot.get("https://www.facebook.com/")
 
