@@ -33,7 +33,7 @@ class AMFBot:
         self.stop = threading.Event()
         self.is_running = False
         self.check_list = []
-        self.dlay = random.randrange(15,20)
+        self.dlay = random.randrange(5,10)
         self.api_token = '6286940046:AAFrut4rAMEfmcAdRTwPZpe0OHMidgeC9Qw'
         self.chat_id = '1733472658'
         Bot = "Bot!"
