@@ -3,6 +3,8 @@ from tkinter import *
 from tkinter import ttk
 from selenium import webdriver
 import undetected_chromedriver as uc
+from undetected_chromedriver import Chrome, ChromeOptions
+from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -173,12 +175,18 @@ def facebook(s,user):
         with open('name.txt', 'r') as f:
                 name = f.read().splitlines()
 
-        options = uc.ChromeOptions()
-        pro = "C://Users//kreem//AppData//Local//Google//Chrome//User Data//"
-        # options.add_argument(f"user-data-dir={pro}")
-        options.add_argument("--lang=en")
-        options.add_argument("--start-maximized")
-        bot = uc.Chrome(options=options,use_subprocess=True)
+        # Create ChromeOptions object to configure browser options
+        options = ChromeOptions()
+
+        # Add protection options
+        options.add_argument("--disable-blink-features=AutomationControlled")
+        options.add_argument("--disable-extensions")
+        options.add_argument("--disable-plugins")
+        options.add_argument("--disable-popup-blocking")
+        options.add_argument("--disable-notifications")
+        
+        # Set up undetected Chrome browser instance
+        bot = Chrome(executable_path=ChromeDriverManager().install(), options=options)
         
 
         bot.get("https://www.facebook.com/")
@@ -256,7 +264,7 @@ def start():
         api_token = '6286940046:AAFrut4rAMEfmcAdRTwPZpe0OHMidgeC9Qw'
         chat_id = '1733472658'
         chrs = 'abcdefghijklmnopqrstuvwxyz'
-        user = ''.join(choices(chrs, k=7))
+        user = ''.join(choices(chrs, k=8))
         Write.Print(f"         [?] {user} \n", Colors.cyan_to_blue, interval=0.0001)
         Write.Print("          [?] Email ↓\n", Colors.cyan_to_blue, interval=0.0001)
         url = f'https://api.telegram.org/bot{api_token}/sendMessage'
