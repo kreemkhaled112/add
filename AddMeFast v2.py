@@ -298,7 +298,7 @@ class AMFBot:
         self.options.add_argument(f"user-data-dir={pro}")
         self.options.add_argument("--lang=en")
         self.options.add_argument("--start-maximized")
-        self.bot = uc.Chrome(options=self.options,use_subprocess=True)
+        self.bot = uc.Chrome(options=self.options,use_subprocess=True,version_main=109)
         bot = self.bot
         print("Done")
 
