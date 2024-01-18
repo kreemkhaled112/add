@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
-import  pyautogui,random,schedule,requests
+import  pyautogui,random,requests
 from time import sleep
 import datetime
 from threading import Thread
