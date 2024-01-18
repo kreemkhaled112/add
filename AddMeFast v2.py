@@ -15,7 +15,9 @@ import datetime
 from threading import Thread
 import threading
 
-
+git config --global user.email "kreemkhaled112@gmail.com
+"
+git config --global user.name "kreemkhaled112"
 class AMFBot:
     def __init__(self,crazy):
         self.crazy = crazy
