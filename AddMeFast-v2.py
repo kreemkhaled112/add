@@ -10,7 +10,6 @@ from time import sleep
 from threading import Thread
 from configparser import ConfigParser
 
-
 class Tiktok(CTk):
     def __init__(self, window_name, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -97,7 +96,7 @@ class AMFBot:
         Soundcloud_Follower = CTkCheckBox(self.crazy, text="Soundcloud Follow",state="disabled", variable=self.Soundcloud_Follower)
         Soundcloud_Like = CTkCheckBox(self.crazy, text="Soundcloud Like",state="disabled", variable=self.Soundcloud_Like)
         Reddit_Members = CTkCheckBox(self.crazy, text="Reddit Members",state="disabled", variable=self.Reddit_Members)
-        Reddit_Upvote = CTkCheckBox(self.crazy, text="Reddit Upvote",state="disabled", variable=self.Reddit_Upvote)
+        Reddit_Upvote = CTkCheckBox(self.crazy, text="Reddit Upvote", variable=self.Reddit_Upvote)
         Tiktok_Follower = CTkCheckBox(self.crazy, text="Tiktok Follower", variable=self.Tiktok_Follower)
         Tiktok_Like = CTkCheckBox(self.crazy, text="Tiktok Like", variable=self.Tiktok_Like)
 
@@ -251,6 +250,11 @@ class AMFBot:
                         self.bot.get("https://addmefast.com/free_points/pinterest_save")
                         sleep(1)
                         ed.pinterest_save()
+
+                    if name == "Reddit Upvote" :
+                        self.bot.get("https://addmefast.com/free_points/reddit_upvotes")
+                        sleep(1)
+                        ed.reddit_Upvote()
                     
                     if name == "Tiktok Follower" :
                         self.bot.get("https://addmefast.com/free_points/tiktok_followers")
@@ -260,9 +264,10 @@ class AMFBot:
                         self.bot.get("https://addmefast.com/free_points/tiktok_video_likes")
                         sleep(1) 
                         ed.tiktok_like()
-            self.crazy.title("                        Crazy Wait 100")
-            sleep(100)
-            self.crazy.title("                        Crazy")
+            if self.is_running:
+                self.crazy.title("                        Crazy Wait 100")
+                sleep(100)
+                self.crazy.title("                        Crazy")
     def login(self):
         self.bot.find_element(By.NAME, 'login_button').click()
         print("successfully logged in")
@@ -270,13 +275,11 @@ class AMFBot:
     def open(self):
         self.Open.configure(state="disabled")
         print("Lodaing......")
-        self.options = uc.ChromeOptions()
+        chrome_options = uc.ChromeOptions()
         pro = "C://Users//kreem//AppData//Local//Google//Chrome//User Data//"
-        self.options.add_argument("--profile-directory=Profile 2")
-        self.options.add_argument(f"user-data-dir={pro}")
-        self.options.add_argument("--lang=en")
-        self.options.add_argument("--start-maximized")
-        self.bot = uc.Chrome(options=self.options,use_subprocess=True)
+        chrome_options.add_argument("--profile-directory=Profile 2")
+        chrome_options.add_argument(f"user-data-dir={pro}")
+        self.bot = uc.Chrome(options=chrome_options)
         bot = self.bot
         print("Done")
 
@@ -308,13 +311,7 @@ class AMFBot:
                             break
                         except: ed.Check_items() ;break
                 bot.switch_to.window(bot.window_handles[1])  
-                try: WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
-                except:
-                    bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
-                    sleep(5)
-                    ed.facebook_post() 
-                    break
+                
                 try:
                     sleep(self.befor)
                     WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'Like')]"))).click()
@@ -358,13 +355,7 @@ class AMFBot:
                             break
                         except: ed.Check_items() ;break
                 bot.switch_to.window(bot.window_handles[1])  
-                try: WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
-                except:
-                    bot.switch_to.window(bot.window_handles[0])
-                    bot.refresh()
-                    sleep(5)
-                    ed.facebook_page() 
-                    break
+                
                 try:
                     sleep(self.befor)
                     try:WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.XPATH, "//*[contains(text(), 'Like')]"))).click() 
@@ -393,8 +384,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break               
     def facebook_Share(self):
         while self.is_running :
             bot = self.bot
@@ -499,8 +489,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break                   
     def twiter_Retweet(self):
         while self.is_running:
             bot = self.bot 
@@ -550,8 +539,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break                   
     def twiter_Like(self):
         while self.is_running:
             bot = self.bot 
@@ -626,8 +614,9 @@ class AMFBot:
                     break 
                 try:
                     sleep(self.befor)
-                    try:WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='_ap3a _aaco _aacw _aad6 _aade']"))).click()
-                    except:WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='_aacl _aaco _aacw _aad6 _aade']"))).click()
+                    try:WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[@class=' _acan _acap _acat _aj1- _ap30']"))).click()
+                    except :WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='_ap3a _aaco _aacw _aad6 _aade']"))).click()
+
                     sleep(self.after)
                 except:
                     self.n += 1
@@ -652,8 +641,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break         
     def instagram_Like(self):
         bot = self.bot 
         while self.is_running:
@@ -677,7 +665,6 @@ class AMFBot:
                     ed.instagram_Like() 
                     break
                 try:
-                    bot.maximize_window()
                     sleep(self.befor)
                     try: WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "span[class='xp7jhwk']"))).click()
                     except: WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "span[class='_aamw']"))).click()
@@ -758,8 +745,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break                   
     def youtube_Like(self):
         bot = self.bot 
         while self.is_running:
@@ -785,7 +771,7 @@ class AMFBot:
                 try:
                     sleep(self.befor)
                     WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.XPATH,
-                        "/html/body/ytd-app/div[1]/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[2]/ytd-watch-metadata/div/div[2]/div[2]/div/div/ytd-menu-renderer/div[1]/segmented-like-dislike-button-view-model/yt-smartimation/div/div/like-button-view-model/toggle-button-view-model/button"))).click()
+                        "/html/body/ytd-app/div[1]/ytd-page-manager/ytd-watch-flexy/div[5]/div[1]/div/div[2]/ytd-watch-metadata/div/div[2]/div[2]/div/div/ytd-menu-renderer/div[1]/segmented-like-dislike-button-view-model/yt-smartimation/div/div/like-button-view-model/toggle-button-view-model/button-view-model/button"))).click()
                     sleep(random.randrange(5,10))
                 except:
                     self.n += 1
@@ -859,8 +845,7 @@ class AMFBot:
                     except:
                         ed.Telgram(self.text2)
                         input("Error......")
-                        break
-                    
+                        break                   
     def pinterest_save(self):
         bot = self.bot 
         while self.is_running:
@@ -935,11 +920,13 @@ class AMFBot:
                     ed.tiktok_Follow()
                     break
                 try:
+                    # sleep(self.befor)
+                    # WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[data-e2e='follow-button']"))).click()
+                    # sleep(random.randrange(5,10))
                     url = bot.current_url
                     requests.post(f'https://api.telegram.org/bot{self.api_token}/sendMessage', json={'chat_id': self.chat_id, 'text': url})
                     username = re.search(r'@(\w+)', url).group(0)
-                    entery = Tiktok(username)
-                    entery.mainloop()
+                    Tiktok(username).mainloop()
                     sleep(10)
                 except:
                     self.bot.close()
@@ -984,8 +971,7 @@ class AMFBot:
                     url = bot.current_url
                     requests.post(f'https://api.telegram.org/bot{self.api_token}/sendMessage', json={'chat_id': self.chat_id, 'text': url})
                     username = re.search(r'@(\w+)', url).group(0)
-                    entery = Tiktok(username)
-                    entery.mainloop()
+                    Tiktok(username).mainloop()
                     sleep(5)
                 except:
                     self.bot.close()
@@ -1004,6 +990,60 @@ class AMFBot:
                     bot.switch_to.window(bot.window_handles[0])
                     ed.tiktok_like()
                     break
+    
+    def reddit_Upvote(self):
+        while self.is_running:
+            bot = self.bot 
+            try:
+                try: WebDriverWait(bot,10).until(EC.presence_of_element_located((By.LINK_TEXT, "Upvote"))).click()
+                except:
+                    try: ed.Check_page()
+                    except :
+                        try:
+                            bot.refresh()
+                            WebDriverWait(bot,10).until(EC.presence_of_element_located((By.LINK_TEXT, "Upvote")))
+                            ed.reddit_Upvote() 
+                            break
+                        except: ed.Check_items() ; break
+                bot.switch_to.window(bot.window_handles[1])
+                try: WebDriverWait(bot, 10).until(EC.element_to_be_clickable((By.XPATH, "//body")))
+                except:
+                    bot.switch_to.window(bot.window_handles[0])
+                    sleep(5)
+                    ed.reddit_Upvote()
+                    break
+                
+                try:
+                    sleep(self.befor)
+                    try : WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[2]/div[2]/div/div/div/div[2]/div[3]/div[1]/div[3]/div[1]/div/div[1]/div/button[1]/span"))).click()
+                    except : WebDriverWait(bot, 5).until(EC.element_to_be_clickable((By.XPATH, "/html/body/shreddit-app/dsa-transparency-modal-provider/report-flow-provider/div/main/shreddit-post//div[2]/span/span/button[1]/span"))).click()
+                    sleep(random.randrange(10,15))
+                except:
+                    bot.close()
+                    bot.switch_to.window(bot.window_handles[0])
+                    sleep(5)
+                    ed.reddit_Upvote()
+                    break
+                
+                bot.close()
+                bot.switch_to.window(bot.window_handles[0])
+                sleep(5)
+                ed.reddit_Upvote()
+                break
+            except : 
+                try: ed.Bypass_Cloudflare() ; ed.reddit_Upvote() ; break
+                except:
+                    try:
+                        ed.Check_items1()
+                        bot.refresh()
+                        ed.reddit_Upvote()
+                        break
+                    except:
+                        ed.Telgram(self.text2)
+                        input("Error......")
+                        break
+
+
     def Bypass_Cloudflare(self):
         a = 0
         WebDriverWait(self.bot, 10).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/div/div[1]/div/div/iframe")))
