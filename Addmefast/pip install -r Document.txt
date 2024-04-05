@@ -1,0 +1,11 @@
+customtkinter
+selenium
+webdriver_manager
+pyperclip
+pystyle
+bs4
+pyautogui
+pystyle
+pygame
+undetected_chromedriver
+googletrans
