@@ -1,3 +1,4 @@
+<<<<<<< HEAD:pip install -r Document.txt
 customtkinter
 selenium
 webdriver_manager
@@ -8,4 +9,16 @@ pyautogui
 pystyle
 pygame
 undetected_chromedriver
+=======
+customtkinter
+selenium
+webdriver_manager
+pyperclip
+pystyle
+bs4
+pyautogui
+pystyle
+pygame
+undetected_chromedriver
+>>>>>>> c1b41eab505c6d8dc4721705bfeaee2b5f6164e1:Addmefast/pip install -r Document.txt
 googletrans
